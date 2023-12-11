@@ -1,4 +1,4 @@
-#include <studio.h>
+#include <stdio.h>
 #include <string.h>
 
 // int main()
@@ -23,29 +23,29 @@
 
 // eng kichik sonni chiqarish if else bilan
 
-int main()
-{
-    char str[6] = "hello";
-    int row = strlen(str);
-    int step = 1;
-    int i = 0;
-    while (step <= row)
-    {
-        i = 0;
-        while (i < step)
-        {
-            printf("%c", str[i]);
-            i++;
-        }
-        printf("\n");
-        step++;
-    }
-
-    return 0;
-}
-// int i = 0;
-// while (str[i] ! = '\0')
+// int main()
 // {
-//     printf("%c\n", str[i]);
-//     i++;
+//     char str[6] = "hello";
+//     int row = strlen(str);
+//     int step = 1;
+//     int i = 0;
+//     while (step <= row)
+//     {
+//         i = 0;
+//         while (i < step)
+//         {
+//             printf("%c", str[i]);
+//             i++;
+//         }
+//         printf("\n");
+//         step++;
+//     }
+
+//     return 0;
 // }
+int i = 0;
+while (str[i] ! = '\0')
+{
+    printf("%c\n", str[i]);
+    i++;
+}
