@@ -59,21 +59,52 @@
 //     i++;
 // }
 
-int maxProduct()
-{
-    int maxProduct(int*nums, int numsSize){
-    int ans=0;
-    for (int i = 0; i < numsSize(); i++)
-    {
-       for (int j=i+1; j < numsSize(); j++)
-       {
-       ans max(ans, (nums[i]-1)*(nums[j]-1));
-       }
+// int maxProduct()
+// {
+//     int maxProduct(int*nums, int numsSize){
+//     int i=0;
+//     for (int i = 0; i < numsSize(); i++);
+//     {
+//        for (int j = i+1; j < numsSize(); j++);
+//        {
+//        ans max(ans (nums[i]-1)*(nums[j]-1));
+//        }
        
+//     }
+
+//  return ans;   
+// }
+// abc
+// b c a
+//   return 0;
+// }
+   //  a b c
+   // b c a 
+   // c a b
+   // a b c
+   // qilib kelish
+
+
+    void swap(int*p1, int*p2){
+        int temp =*p1;
+        *p1=*p2;
+        *p1=temp;
     }
 
- return ans;   
-}
+    int main(){
+      int a = 4;
+      int b = 8;
+      printf("%d %d\n" ,a,b);
+      swap(&a, &b);
+      return 0;
+    }
 
-}
-    // ans max((nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12)
+
+
+
+   //  temp vaqtinchali
+   // pointer 2ta vazifasi bor 1-saqlash 2-yo'naltirish
+   // pointer-* bilan belgilanadi
+
+   // test dil8
+   // man6
