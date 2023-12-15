@@ -8,7 +8,7 @@
 //     while (i <size2 -1)
 //     {
 //     }
-    
+
 //     }
 // int main()
 // {
@@ -69,42 +69,204 @@
 //        {
 //        ans max(ans (nums[i]-1)*(nums[j]-1));
 //        }
-       
+
 //     }
 
-//  return ans;   
+//  return ans;
 // }
 // abc
 // b c a
 //   return 0;
 // }
-   //  a b c
-   // b c a 
-   // c a b
-   // a b c
-   // qilib kelish
+//  a b c
+// b c a
+// c a b
+// a b c
+// qilib kelish
 
+// void swap(int*p1, int*p2){
+//     int temp =*p1;
+//     *p1=*p2;
+//     *p1=temp;
+// }
 
-    void swap(int*p1, int*p2){
-        int temp =*p1;
-        *p1=*p2;
-        *p1=temp;
-    }
+// int main(){
+//   int a = 4;
+//   int b = 8;
+//   printf("%d %d\n" ,a,b);
+//   swap(&a, &b);
+//   return 0;
+// }
 
-    int main(){
-      int a = 4;
-      int b = 8;
-      printf("%d %d\n" ,a,b);
-      swap(&a, &b);
-      return 0;
-    }
+// enter = 10, enter = '\n'
+// null = 0, null = '\0'
 
+// int my_strlen(char *str)
+// {
+//     int count = 0;
+//     for (int i = 0; str[i] != '\0'; i++)
+//     {
+//         count++;
+//     }
+//     return count;
+// }
 
+// char *my_revers(char *str)
+// {
+//     int len = my_strlen(str);
+//     char c;
+//     for (int i = 0; i < len / 2; i++)
+//     {
+//         c = str[i];
+//         str[i] = str[len - i - 1];
+//         str[len - i - 1] = c;
+//         printf("%s\n", str);
+//        int sleep('1');
+//     }
+//     return &str[0];
+// }
 
+// int main()
+// {
+//     static char str[] = "hello";
+//     printf("%s\n", my_revers(&str[0]));
+//     return 0;
+// }
 
-   //  temp vaqtinchali
-   // pointer 2ta vazifasi bor 1-saqlash 2-yo'naltirish
-   // pointer-* bilan belgilanadi
+// void mult_elements(int* arr, int size)
+// {
+//     for (int i = 0; i < size; i++)
+//     {
+//         arr[i] *= 2;
+//     }
+// }
 
-   // test dil8
-   // man6
+// int main()
+// {
+//     int arr[] = {2,3,4,5,6};
+//     mult_elements(arr, 5);
+//     for (int i = 0; i < 5; i++)
+//     {
+//         printf("%d ", arr[i]);
+//     }
+//     printf("\n");
+//     return 0;
+// }
+// togri
+
+// int factorial(int n) {
+//     int result = 1;
+
+//     for (int i = 1; i <= n; i++) {
+//         result *= i;
+//     }
+
+//     return result;
+// }
+
+// int main() {
+//     int number = 8;
+//     int result = factorial(number);
+//     printf("%d\n", result);
+
+//     return 0;
+// }
+// xato
+
+// int main()
+// {
+//     for (int i = 0; i < 2; i++)
+//     {
+//         for (int j = 0; j < 2; j++)
+//         {
+//             printf("%d", j);
+//         }
+//     }
+//     printf("\n");
+
+//     return 0;
+// }
+// xato
+
+// int main()
+// {
+//     int a=10, *j;
+//     void *k;
+//     j=k=&a;
+//     j++;
+//     k++;
+//     printf("%u %u\n", j, k);
+//     return 0;
+// }
+// togri
+
+// int main()
+// {
+//     int x = 10, y = 100%90, i;
+//     for(i=1; i<10; i++)
+//     if(x != y)
+//         printf("x = %d y = %d\n", x, y);
+//     return 0;
+// }
+// togri
+
+// int function1(int k)
+// {
+//     k++;
+//     return k;
+// }
+
+// int main()
+// {
+//     int k=30;
+//     k = function1(k=function1(k=function1(k)));
+//     printf("k=%d\n", k);
+//     return 0;
+// }
+// xato
+
+// int main()
+// {
+//     char str[] = "Nagpur";
+//     str[0]='K';
+//     printf("%s, ", str);
+//     char str []= "Kanpur";
+//     printf("%s", str+1);
+//     return 0;
+// }
+// xato
+
+// int main()
+// {
+//     int arr[2][4];
+
+//     for (int i = 0; i < 2; i++)
+//     {
+//         for (int j = 0; j < 4; j++)
+//         {
+//             arr[i][j] = j + 1;
+//         }
+//     }
+
+//     for (int i = 0; i < 2; i++)
+//     {
+//         for (int j = 0; j < 4; j++)
+//         {
+//             printf("%d ", arr[i][j]);
+//         }
+//     }
+//     printf("\n");     
+
+//     return 0;
+// }
+
+{
+    int i;
+    long f=1;
+    for(i=1; i<=num; i++)
+        f = f * i;
+    return f;
+}
+//  temp vaqtinchali
+// pointer 2ta vazifasi bor 1-saqlash 2-yo'naltirish
+// pointer-* bilan belgilanadi
