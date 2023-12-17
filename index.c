@@ -260,13 +260,19 @@
 //     return 0;
 // }
 
-{
-    int i;
-    long f=1;
-    for(i=1; i<=num; i++)
-        f = f * i;
-    return f;
+function destCity(paths) {
+  const outgoing = new Set(); 
+
+  for (let i = 0; i < paths.length; i++) {
+    outgoing.add(paths[i][0]); 
+  }
+
+  for (let i = 0; i < paths.length; i++) {
+    if (!outgoing.has(paths[i][1])) {
+      return paths[i][1]; 
+    }
+  }
 }
-//  temp vaqtinchali
-// pointer 2ta vazifasi bor 1-saqlash 2-yo'naltirish
-// pointer-* bilan belgilanadi
+const paths = [["London", "New York"], ["New York", "Lima"], ["Lima", "Sao Paulo"]];
+const destination = destCity(paths);
+console.log(destination); 
