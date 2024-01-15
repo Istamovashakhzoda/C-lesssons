@@ -121,4 +121,41 @@ int *readNumbers(int*count){
         }
         buffer[bufferIndex++] = character;
     }
+    close(fileDescriptor);
+    free(buffer);
+
+    *count = arrIndex;
+    return arr;
+}
+
+void sortNums(int arr[], int arrIndex){
+    bubleSort(arr, arrIndex);
+
+    int fileDescriptor = open("main", O_WRONLY | O_TRUNC);
+    char *buffer = malloc(sizeof(char) *128);
+
+    for (int bufferIndex = 0; bufferIndex < arrIndex; bufferIndex++)
+    {  
+    FullNull(buffer, 128);
+    sprintf(buffer, "%d", arr[bufferIndex]);
+    write(fileDescriptor, buffer, strlen(buffer));
+    if (bufferIndex < arrIndex -1)
+    {
+        write(fileDescriptor,",");
+    }
+    
+        }
+        write(fileDescriptor,"\n");
+
+        free(buffer);
+        free(arr);
+        close(fileDescriptor);    
+}
+
+int main(){
+    int count = 0;
+    int *numbers=readNumbers(&count);
+    sortNums(numbers, count);
+
+    return 0 ;
 }
