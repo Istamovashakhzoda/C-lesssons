@@ -1,70 +1,34 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-
-void bubbleSort(int arr[], int n) {
-    int i;
-    int j;
-    int temp;
-    for (i = 0; i < n-1; i++) {
-        for (j = 0; j < n-1; j++) {
-            if (arr[j] > arr[j+1]) {
-                temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-            }
-        }
-    }
-}
-int main() {
-    int numbers[] = {5, 2,7, 8,4, 12, 1,3,9,0};
-    int numElements = sizeof(numbers) / sizeof(numbers[0]);
-    int file = open("main", O_WRONLY, 18);
-    if (file == -1) {
-        printf("\n");
-        return 1;
-    }
-    bubbleSort(numbers, numElements);
-    for (int i = 0; i < numElements; i++) {
-        dprintf(file, "%d\n", numbers[i]);
-    }
-    close(file);
-    printf("\n");
-    return 0;
-}
-
-
-
-
-
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// #include <stdlib.h>
+// #include <stdio.h>                                                       
+// #include <fcntl.h> 
+// #include <stdlib.h> 
 // #include <unistd.h>
 // #include <string.h>
 
-// void fillNull(char *str, int count) {
-//     for (int i = 0; i < count; i++) {
-//         str[i] = '\0';
+// void bubbleSort(int array[], int arrayIndex) {
+//     int temp = 0;
+//     for (int i = 0; i < arrayIndex - 1; i++) {
+//         for (int j = i + 1; j < arrayIndex; j++) {
+//             if (array[i] > array[j]) {
+//                 temp = array[i];
+//                 array[i] = array[j];
+//                 array[j] = temp;
+//             }
+//         }
 //     }
 // }
-
-// void readAndSortNumbers() {
-//     int fileDescriptor = open("main", O_RDONLY);
-
+// void fillNull(char *str, int count) {
+//     for (int i = 0; i < count; i++) {
+//         str[i] = '\n';
+//     }
+// }
+// int* readNumbers(int* count) {
+//     int fileDescriptor = open("main", O_RDWR);
 //     int bufferIndex = 0;
 //     int arrayIndex = 0;
-
-//     int temp = 0;
-
 //     int bufferSize = 128;
-
 //     char character;
-
 //     char *buffer = malloc(sizeof(char) * (bufferSize + 1));
 //     int *array = malloc(sizeof(int) * (bufferSize + 1));
-
 //     while (read(fileDescriptor, &character, 1)) {
 //         if (character == ',' || character == '\n') {
 //             array[arrayIndex++] = atoi(buffer);
@@ -74,89 +38,87 @@ int main() {
 //         }
 //         buffer[bufferIndex++] = character;
 //     }
-
 //     close(fileDescriptor);
+//     free(buffer);
+//     *count = arrayIndex;
+//     return array;
+// }
 
-//     for (int outer = 0; outer < arrayIndex - 1; outer++) {
-//         for (int inner = outer + 1; inner < arrayIndex; inner++) {
-//             if (array[outer] > array[inner]) {
-//                 temp = array[outer];
-//                 array[outer] = array[inner];
-//                 array[inner] = temp;
-//             }
-//         }
-//     }
-
-//     fileDescriptor = open("main", O_WRONLY | O_TRUNC);
-
-//     for (bufferIndex = 0; bufferIndex < arrayIndex; bufferIndex++) {
-//         fillNull(buffer, bufferSize);
+// void sortNumbers(int array[], int arrayIndex) {
+//     bubbleSort(array, arrayIndex);
+//     int fileDescriptor = open("main", O_WRONLY | O_TRUNC);
+//     char *buffer = malloc(sizeof(char) * 128);
+//     for (int bufferIndex = 0; bufferIndex < arrayIndex; bufferIndex++) {
+//         fillNull(buffer, 128);
 //         sprintf(buffer, "%d", array[bufferIndex]);
 //         write(fileDescriptor, buffer, strlen(buffer));
 //         if (bufferIndex < arrayIndex - 1) {
 //             write(fileDescriptor, ",", 1);
 //         }
 //     }
-
 //     write(fileDescriptor, "\n", 1);
-
 //     free(buffer);
 //     free(array);
 //     close(fileDescriptor);
 // }
 
 // int main() {
-//     readAndSortNumbers();
-
+//     int count = 0;
+//     int *numbers = readNumbers(&count);
+//     sortNumbers(numbers, count);
 //     return 0;
 // }
 
+// My code when i try to write this...
+#include<stdio.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<stdlib.h>
 
-
-
-
-
-
-
-
-// #include <fcntl.h>
-// #include <stdio.h>
-// #include <stdlib.h>
-// #include <unistd.h>
-
-// void sort(int array[], int size){
-//     for (int i = 0; i < size; i++)
-//     {
-//     for (int j = 0; j < size; j++)
-// {
-//      if (array[j]>array[j+1])
-//      {
-//         int temp = array[j];
-//         array[j]=array[j+1];
-//         array[j+1]=temp;
-//      }
-     
-// }
-//     }
+void bubleSort(int arr[], int arrIndex){
+    int temp=0;
+    for (i = 0; i < arrIndex-1; i++)
+    {
+        for (j = i+1; i < arrIndex; j++)
+        {
+            if (arr[i]>arr[j])
+            {
+                temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+            
+        }
+        
+    }
     
-// }
-// void print(int array[], int size){
-//     for (int i = 0; i < size; i++)
-//     {
-//         printf("%d\n", array[i]);
-//     }
+}
+
+void FullNull(char *str, int count){
+    for (int i = 0; i < count; i++)
+    {
+        str[i]='\n';
+    }
     
-// }
-// int main(){
-//     int array[]={9,8,2,7,3,6,4,5,1};
-//     int size = sizeof(array)/sizeof(array[1]);
+}
 
-//     sort(array,size);
-//     print(array,size);
+int *readNumbers(int*count){
+    int fileDescriptor = open("main", O_RDWR,);
+    int bufferIndex = 0;
+    int arrIndex = 0;
+    int bufferSize = 128;
+    char character;
+    char *buffer = malloc(sizeof(char)*(bufferSize +1));
+    int *arr = malloc(sizeof(int)*(bufferSize+1));
 
-//     int fd = open("main", O_WRONLY);
-//     ssize_t filedesc = write(fd, "9,1,8,2,7,3,6,4,5",11);
-//     close(fd);
-
-//     return 0;
-// }
+    while (read(fileDescriptor, &character, 1)){
+        if (character=="," || character== '\n')
+        {
+           arr[arrIndex++] = atoi(buffer);
+           bufferIndex = 0;
+           FullNull(buffer, bufferSize);
+           continue;
+        }
+        buffer[bufferIndex++] = character;
+    }
+}
