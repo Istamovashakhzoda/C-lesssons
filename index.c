@@ -1,81 +1,41 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-void bubbleSort(int array[], int arrayIndex) {
-    int temp = 0;
-    for (int i = 0; i < arrayIndex - 1; i++) {
-        for (int j = i + 1; j < arrayIndex; j++) {
-            if (array[i] > array[j]) {
-                temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        }
-    }
+int my_strlen(char* str){
+  int i = strlen(str);
+  return i;
 }
+void fillArray(int* array, char* str){ 
+    int index = 0; 
+    while (str[index] != '\0'){ 
+        if (str[index] != '"'){ 
+            array[(int)str[index]] ++; 
+        } 
+        index ++; 
+    } 
+} 
 
-void fillNull(char *str, int count) {
-    for (int i = 0; i < count; i++) {
-        str[i] = '\0';
-    }
-}
+void printArray(int* array, int sizeArray){ 
+    int index = 0; 
+    while (index < sizeArray){ 
+        if (array[index] > 0){  
+            printf("%c:%i\n", index, array[index]); 
+        } 
+        index ++; 
+    } 
+} 
 
-int *readNumbers(int *count) {
-    int fileDescriptor = open("main", O_RDONLY);
-    int bufferIndex = 0;
-    int arrayIndex = 0;
-    int bufferSize = 128;
-    char character;
-    char *buffer = malloc(sizeof(char) * (bufferSize + 1));
-    int *array = malloc(sizeof(int) * bufferSize);
+int main(int argc, char** argv){ 
+    int index = 1; 
+    const int MAX_ARRAY_SIZE = 128;
+    int array[128] = {0}; 
 
-    while (read(fileDescriptor, &character, 1)) {
-        if (character == ',' || character == '\n') {
-            array[arrayIndex++] = atoi(buffer);
-            bufferIndex = 0;
-            fillNull(buffer, bufferSize);
-            continue;
-        }
-        buffer[bufferIndex++] = character;
-    }
+    while (index < argc){ 
+        fillArray(array, argv[index]); 
+        index ++; 
+    } 
+    printArray(array, MAX_ARRAY_SIZE); 
 
-    close(fileDescriptor);
-    free(buffer);
-
-    *count = arrayIndex;
-    return array;
-}
-
-void sortNumbers(int array[], int arrayIndex) {
-    bubbleSort(array, arrayIndex);
-
-    int fileDescriptor = open("main", O_WRONLY | O_TRUNC);
-    char *buffer = malloc(sizeof(char) * 128);
-    fillNull(buffer, 128);
-
-    for (int bufferIndex = 0; bufferIndex < arrayIndex; bufferIndex++) {
-        sprintf(buffer, "%d", array[bufferIndex]);
-        write(fileDescriptor, buffer, strlen(buffer));
-        if (bufferIndex < arrayIndex - 1) {
-            write(fileDescriptor, ",", 1);
-            fillNull(buffer, 128);
-        }
-    }
-
-    write(fileDescriptor, "\n", 1);
-
-    free(buffer);
-    free(array);
-    close(fileDescriptor);
-}
-
-int main() {
-    int count = 0;
-    int *numbers = readNumbers(&count);
-    sortNumbers(numbers, count);
-
-    return 0;
+    return EXIT_SUCCESS; 
 }
